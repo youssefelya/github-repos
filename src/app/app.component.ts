@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-
+import { NgxSpinnerService } from 'ngx-spinner';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import {RepoDetailsComponent} from './repo-details/repo-details.component';
+import {Response} from '../assets/dataSet';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,15 +11,23 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'github-repo';
   repos=[];
-  testObject = {
-    full_name:'Youssef ELYA',
-    name:'Youssef',
-    owner:{
-      login:'Login',
-      avatar_url:'https://avatars.githubusercontent.com/u/583231?v=3',
-    }
+  constructor(private spinner : NgxSpinnerService
+              ,private dialog: MatDialog
+    ){
+    this.repos=Array(30).fill(Response);
   }
-  constructor(){
-    this.repos=Array(30).fill(this.testObject);
+
+  onScroll () {
+    this.spinner.show();    
   }
+
+  openDialog ( repo ): void {
+    const dialogRef = this.dialog.open( RepoDetailsComponent, {
+      width: '80%',
+      height:'70%',
+      data: repo,
+    } );
+  }
+
+
 }
