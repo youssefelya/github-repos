@@ -1,32 +1,38 @@
-
-
-
 <div class="container">
 
-    <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50"
+  <div class="search-results" 
+  infiniteScroll 
+  [infiniteScrollDistance]="2" 
+  [infiniteScrollThrottle]="50"
     (scrolled)="onScroll()">
 
     <div class="row pt-4">
-        <div class="col-md-3 p-2" *ngFor="let repo of repos">
+      <div class="col-md-3 p-2" *ngFor="let repo of repositoriesData">
 
-            <!-- Card-->
-            <div class="card" (click)="openDialog(repo)">
-                <div class="card-header">
-                <img [src]='repo.owner.avatar_url' class='img-thumbnail'/>
-                </div>
-                <div class="card-body">
-                        <p class="full_name">{{repo.full_name}}</p>
-                        <p class="username">{{repo.owner.login}}</p>
-                </div>
-            </div>
-
+        <!-- Card-->
+        <div class="card" (click)="openDialog(repo)">
+          <div class="card-header">
+            <img [src]='repo.owner.avatar_url' class='img-thumbnail' />
+          </div>
+          <div class="card-body">
+            <p class="full_name">{{repo.full_name}}</p>
+            <p class="username">{{repo.owner.login}}</p>
+          </div>
         </div>
-    </div>  
-</div>
- <!--sinner-->
- <div class="row pb-5">
+
+      </div>
+    </div>
+  </div>
+
+  <!--sinner-->
+  <div class="row pb-5">
     <div class="col-md-12 p-5">
-      <ngx-spinner bdOpacity=0.9 bdColor="" size="default" color="#581f87" type="ball-pulse-sync" [fullScreen]="false">
+      <ngx-spinner bdOpacity=0.9
+       bdColor="" 
+       size="default" 
+       color="#581f87" 
+       type="ball-pulse-sync"
+       [fullScreen]="false">
       </ngx-spinner>
     </div>
   </div>
