@@ -1,4 +1,3 @@
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
@@ -9,21 +8,25 @@
 
   <div class="card-body">
 
+    <div class="row">
+      <div *ngIf="dataChartNotEmpty" class="col">
+        <div id="chartContainer"></div>
+      </div>
+
       <div class="col">
         <p class="full-name">{{repositoryData.full_name}}</p>
         <p class="username">{{repositoryData.owner.login}}</p>
         <a href={{repositoryData.owner.html_url}} target="_blank" class="fa fa-github">GitHub</a>
         <br />
-        <i class="fa fa-star" aria-hidden="true" *ngFor="let s of score_number" style="color:yellow" ></i>
+        <i class="fa fa-star" aria-hidden="true" *ngFor="let s of score_number" style="color:yellow"></i>
         <br />
-        <i class="fa fa-exclamation-circle" aria-hidden="true" *ngIf="repositoryData.has_issues">Issue :{{repositoryData.open_issues}} </i>
+        <i class="fa fa-exclamation-circle" aria-hidden="true" *ngIf="repositoryData.has_issues">Issue
+          :{{repositoryData.open_issues}} </i>
         <br />
         <p class="lead">{{repositoryData.description}}</p>
       </div>
+    </div>
   </div>
 
 
 </div>
-
-
-
