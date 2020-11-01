@@ -59,6 +59,7 @@ export class AppComponent implements OnInit {
         this.incomplete_results = res[ 'incomplete_results' ];
         this.repositoriesData = [ ...this.repositoriesData, ...res[ 'items' ] ];
         this.currentPage++;
+        this.spinner.hide();
       },
       err => {
         if ( err.status === 403 ) {
@@ -67,11 +68,10 @@ export class AppComponent implements OnInit {
         else {
           console.log( 'Error !!  ', err );
         }
+        this.spinner.hide();
       }
     );
-    //after reciving a result or an error we hide the spinner! 
-    // This is always executed because we are not throwing an error.
-    this.spinner.hide();
+    
   }
 
   dateFormate () {
